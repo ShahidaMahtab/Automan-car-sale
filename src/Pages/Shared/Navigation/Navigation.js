@@ -8,11 +8,12 @@ import IconButton from "@mui/material/IconButton";
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import DriveEtaIcon from "@mui/icons-material/DriveEta";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 const Navigation = () => {
   const { user, logOut } = useAuth();
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" className="bg-dark text-white">
         <Toolbar>
           <IconButton
             size="large"
@@ -24,6 +25,9 @@ const Navigation = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <DriveEtaIcon fontSize="large" /> AutoMan
           </Typography>
+          <Link className="text-white text-decoration-none" to="/home">
+            <Button color="inherit">Home</Button>
+          </Link>
           <Link className="text-white text-decoration-none" to="/login">
             <Button color="inherit">Login</Button>
           </Link>
@@ -32,7 +36,11 @@ const Navigation = () => {
               LogOut
             </Button>
           )}
-          {user.displayName && <span>{user.displayName}</span>}
+          {user.displayName && (
+            <span>
+              <AccountCircleIcon /> {user.displayName}
+            </span>
+          )}
         </Toolbar>
       </AppBar>
     </Box>

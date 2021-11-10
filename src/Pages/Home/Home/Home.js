@@ -1,13 +1,14 @@
 import React from "react";
-import Navigation from "../../Shared/Navigation/Navigation";
+
 import Banner from "../Banner/Banner";
+import BannerForm from "../BannerForm/BannerForm";
 
 const Home = () => {
   return (
     <div>
-      <Navigation />
       <Banner />
-      <h1>home page</h1>
+      <BannerForm></BannerForm>
+      <h1>hi</h1>
     </div>
   );
 };
