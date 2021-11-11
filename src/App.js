@@ -5,6 +5,7 @@ import Login from "./Pages/Login/Login/Login";
 import Register from "./Pages/Login/Register/Register";
 import AuthProvider from "./context/AuthProvider";
 import NotFound from "./Pages/NotFound/NotFound";
+import About from "./Pages/Home/About/About";
 function App() {
   return (
     <div className="App">
@@ -19,6 +20,9 @@ function App() {
             </Route>
             <Route path="/register">
               <Register></Register>
+            </Route>
+            <Route path="/about">
+              <About nav={false} />
             </Route>
             <Route path="/login">
               <Login></Login>
