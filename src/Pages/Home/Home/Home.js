@@ -6,16 +6,19 @@ import About from "../About/About";
 import Banner from "../Banner/Banner";
 import BannerForm from "../BannerForm/BannerForm";
 import Features from "../Features/Features";
+import Services from "../Services/Services";
 
 const Home = () => {
   return (
     <div>
-      <Banner banner={true} />
-      <BannerForm></BannerForm>
-      <Features />
-      <About nav={true} />
-      <h1>hellow</h1>
-      <Footer></Footer>
+      <Banner />
+      <div style={{ background: "#EEF4FC" }}>
+        <BannerForm></BannerForm>
+        <Features />
+        <About />
+        <Services />
+        <Footer></Footer>
+      </div>
     </div>
   );
 };

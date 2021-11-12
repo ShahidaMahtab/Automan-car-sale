@@ -8,10 +8,11 @@ const Title = ({ firstPart, secondPart, smallText }) => {
         <small>{smallText}</small>
       </p>
       <Typography
-        variant="h3"
+        variant="h4"
         gutterBottom
         component="div"
-        className="fw-bold text-center"
+        className="text-center fs-1"
+        style={{ fontWeight: "500" }}
       >
         {firstPart} <span style={{ color: "#011936" }}> {secondPart}</span>
       </Typography>

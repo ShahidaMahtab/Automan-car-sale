@@ -10,10 +10,10 @@ const carBanner = {
   background: `linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url(${banner}) no-repeat`,
   height: "700px",
 };
-const Banner = ({ banner }) => {
+const Banner = () => {
   return (
     <Box style={carBanner} sx={{ flexGrow: 1 }}>
-      <Navigation banner={banner} />
+      <Navigation banner={true} />
       <Grid container spacing={2}>
         <Grid item xs={12} md={12}>
           <Box>

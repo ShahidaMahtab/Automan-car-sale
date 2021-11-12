@@ -6,6 +6,9 @@ import Register from "./Pages/Login/Register/Register";
 import AuthProvider from "./context/AuthProvider";
 import NotFound from "./Pages/NotFound/NotFound";
 import About from "./Pages/Home/About/About";
+import Explore from "./Pages/Home/Explore/Explore";
+import Purchase from "./Pages/Purchase/Purchase";
+import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 function App() {
   return (
     <div className="App">
@@ -22,11 +25,17 @@ function App() {
               <Register></Register>
             </Route>
             <Route path="/about">
-              <About nav={false} />
+              <About nav={true}></About>
             </Route>
             <Route path="/login">
               <Login></Login>
             </Route>
+            <Route path="/explore">
+              <Explore />
+            </Route>
+            <PrivateRoute path="/purchase/:servicesId">
+              <Purchase />
+            </PrivateRoute>
             <Route exact path="*">
               <NotFound />
             </Route>

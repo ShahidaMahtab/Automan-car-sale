@@ -1,16 +1,15 @@
 import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import DriveEtaIcon from "@mui/icons-material/DriveEta";
 
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Nav, Navbar } from "react-bootstrap";
+import Avatar from "@mui/material/Avatar";
+import Chip from "@mui/material/Chip";
 
 const Navigation = ({ banner }) => {
   const { user, logOut } = useAuth();
@@ -42,6 +41,12 @@ const Navigation = ({ banner }) => {
               >
                 <Button color="inherit">about</Button>
               </Link>
+              <Link
+                className="text-white text-decoration-none d-block"
+                to="/explore"
+              >
+                <Button color="inherit">explore</Button>
+              </Link>
 
               <Link
                 className="text-white text-decoration-none d-block"
@@ -55,9 +60,16 @@ const Navigation = ({ banner }) => {
                 </Button>
               )}
               {user.displayName && (
-                <span>
-                  <AccountCircleIcon /> {user.displayName}
-                </span>
+                <Chip
+                  variant="outlined"
+                  style={{ background: "transparent", color: "white" }}
+                  avatar={
+                    <Avatar>
+                      {user?.displayName.slice(0, 1).toUpperCase()}
+                    </Avatar>
+                  }
+                  label={user.displayName}
+                />
               )}
             </Nav>
           </Navbar.Collapse>

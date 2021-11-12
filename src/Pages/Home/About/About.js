@@ -4,10 +4,11 @@ import { Col, Row } from "react-bootstrap";
 import about from "../../../Images/about.png";
 import Navigation from "../../Shared/Navigation/Navigation";
 import Title from "../../Shared/Title/Title";
+import AddIcCallIcon from "@mui/icons-material/AddIcCall";
 const About = ({ nav }) => {
   return (
     <section>
-      {nav || <Navigation></Navigation>}
+      {!nav || <Navigation></Navigation>}
       <Container>
         <Title
           firstPart={"About"}
@@ -42,6 +43,14 @@ const About = ({ nav }) => {
               Automan, we think you should also have pretty high expectations
               for your dealership.
             </Typography>
+            <div className="mt-5 d-flex">
+              <button
+                className="btn px-4 py-2 text-white"
+                style={{ background: "#011936" }}
+              >
+                Learn More
+              </button>
+            </div>
           </Col>
           <Col xs={12} lg={6}>
             <img src={about} alt="" className="img-fluid" />

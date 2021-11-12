@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
@@ -6,7 +6,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import TwitterIcon from "@mui/icons-material/Twitter";
 const Footer = () => {
   return (
-    <div className="" style={{ background: "#000c19" }}>
+    <div style={{ background: "#000c19" }}>
       <Container className="pt-5">
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
@@ -256,15 +256,9 @@ const Footer = () => {
             >
               <TwitterIcon fontSize="large" />
             </Typography>
-            <Typography
-              color="white"
-              display="block"
-              style={{ marginLeft: "10px" }}
-              co
-              className="text-left text-lg-center mx-auto"
-            >
+            <p className="text-left text-lg-center mx-auto text-white">
               Copyright&copy; 2021 AUTOMAN. All right reserved
-            </Typography>
+            </p>
           </Grid>
         </Grid>
       </Container>
