@@ -19,14 +19,18 @@ const Navigation = ({ banner }) => {
       <AppBar
         position="static"
         style={{ background: "#011936" }}
-        className={banner && "bg-transparent shadow-none"}
+        className={banner ? "bg-transparent shadow-none" : ""}
       >
         <Navbar collapseOnSelect expand="lg" className=" py-3 px-5">
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <DriveEtaIcon fontSize="large" />
+            <DriveEtaIcon />
             AUTOMAN
           </Typography>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" className="" />
+          <Navbar.Toggle
+            aria-controls="responsive-navbar-nav"
+            className="text-secondary"
+            style={{ background: "#011936" }}
+          />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
               <Link
@@ -55,9 +59,23 @@ const Navigation = ({ banner }) => {
                 <Button color="inherit">Login</Button>
               </Link>
               {user.email && (
-                <Button color="inherit" className="d-block" onClick={logOut}>
-                  LogOut
-                </Button>
+                <>
+                  <Link
+                    className="text-white text-decoration-none d-block"
+                    to="/dashboard"
+                  >
+                    <Button color="inherit">Dashboard</Button>
+                  </Link>
+                  <Button
+                    variant="outlined"
+                    color="inherit"
+                    className="d-block me-lg-3"
+                    onClick={logOut}
+                    size="small"
+                  >
+                    LogOut
+                  </Button>
+                </>
               )}
               {user.displayName && (
                 <Chip

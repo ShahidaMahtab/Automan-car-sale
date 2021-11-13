@@ -17,7 +17,7 @@ const Services = () => {
       <div className="container-fluid">
         <Row xs={1} md={2} lg={3} className="mx-auto g-4">
           {services.slice(0, 6).map((service) => (
-            <Service key={service.id} service={service}></Service>
+            <Service key={service._id} service={service}></Service>
           ))}
         </Row>
       </div>

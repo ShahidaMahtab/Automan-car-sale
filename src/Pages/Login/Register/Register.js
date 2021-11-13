@@ -28,7 +28,7 @@ const Register = () => {
   } = useForm(formOptions);
   const onSubmit = (data) => {
     const { password, email, name } = data;
-    console.log(data);
+
     registerUser(email, password, name, history);
     reset();
   };

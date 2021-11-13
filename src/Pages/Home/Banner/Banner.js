@@ -18,7 +18,7 @@ const Banner = () => {
         <Grid item xs={12} md={12}>
           <Box>
             <Typography
-              variant="h2"
+              variant="h3"
               className="text-wrap mt-5 d-flex justify-content-center align-items-center"
               style={{ color: "white", fontWeight: "800" }}
             >

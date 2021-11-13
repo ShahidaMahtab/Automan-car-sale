@@ -15,8 +15,8 @@ initializeFirebase();
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [admin, setAdmin] = useState(false);
   const [error, setError] = useState("");
-
   const auth = getAuth();
 
   //email register
@@ -27,6 +27,9 @@ const useFirebase = () => {
         setError("");
         const newUser = { email, displayName: name };
         setUser(newUser);
+        // save user to db
+        saveUser(email, name);
+
         //send name to firebase
         updateProfile(auth.currentUser, {
           displayName: name,
@@ -38,7 +41,7 @@ const useFirebase = () => {
             setError(error.message);
           });
         history.replace("/");
-        console.log("registered");
+        // console.log("registered");
       })
       .catch((error) => {
         setError(error.message);
@@ -53,8 +56,9 @@ const useFirebase = () => {
       .then((result) => {
         const destination = location?.state?.from || "/";
         history.replace(destination);
+
         setError("");
-        console.log("signed in");
+        // console.log("signed in");
       })
       .catch((error) => {
         setError(error.message);
@@ -76,7 +80,11 @@ const useFirebase = () => {
     return () => unsubscribe;
   }, [auth]);
   //admin
-
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setAdmin(data.admin));
+  }, [user.email]);
   //log out
   const logOut = () => {
     setIsLoading(true);
@@ -90,9 +98,19 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
   //save user to db
-
+  const saveUser = (email, displayName) => {
+    const user = { email, displayName };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+  };
   return {
     user,
+    admin,
     error,
     isLoading,
     registerUser,

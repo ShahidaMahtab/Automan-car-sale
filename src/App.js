@@ -9,6 +9,7 @@ import About from "./Pages/Home/About/About";
 import Explore from "./Pages/Home/Explore/Explore";
 import Purchase from "./Pages/Purchase/Purchase";
 import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
+import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 function App() {
   return (
     <div className="App">
@@ -35,6 +36,9 @@ function App() {
             </Route>
             <PrivateRoute path="/purchase/:servicesId">
               <Purchase />
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard">
+              <Dashboard />
             </PrivateRoute>
             <Route exact path="*">
               <NotFound />

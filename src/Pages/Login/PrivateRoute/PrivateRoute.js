@@ -5,7 +5,11 @@ import useAuth from "../../../hooks/useAuth";
 const PrivateRoute = ({ children, ...rest }) => {
   const { user, isLoading } = useAuth();
   if (isLoading) {
-    return <CircularProgress />;
+    return (
+      <div className="d-flex justify-content-center align-items-center pt-5 mt-5">
+        <CircularProgress />
+      </div>
+    );
   }
   return (
     <Route

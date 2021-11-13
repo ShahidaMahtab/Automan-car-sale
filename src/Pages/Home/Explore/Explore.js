@@ -21,7 +21,7 @@ const Explore = () => {
         <div className="container-fluid">
           <Row xs={1} md={2} lg={3} className="mx-auto g-4">
             {services.map((service) => (
-              <Service key={service.id} service={service}></Service>
+              <Service key={service._id} service={service}></Service>
             ))}
           </Row>
         </div>

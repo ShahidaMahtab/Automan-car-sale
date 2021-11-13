@@ -29,7 +29,7 @@ const Login = () => {
   } = useForm(formOptions);
   const onSubmit = (data) => {
     const { password, email } = data;
-    console.log(data);
+
     loginUser(email, password, location, history);
     reset();
   };

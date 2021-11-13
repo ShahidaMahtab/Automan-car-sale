@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
 const Service = ({ service }) => {
-  const { img, desc, price, type, name, rate, id } = service;
+  const { img, desc1, price, type, name, rate, _id } = service;
   return (
     <div>
       <Card
@@ -18,10 +18,10 @@ const Service = ({ service }) => {
       >
         <CardMedia
           component="img"
-          alt="green iguana"
+          alt="car-img"
           height="140"
           image={img}
-          className="img-fluid "
+          className="img-fluid"
         />
         <Button
           className="d-block position-absolute top-0 start-0 ms-3 mt-2"
@@ -40,14 +40,14 @@ const Service = ({ service }) => {
             {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {desc.slice(0, 150)}...
+            {desc1?.slice(0, 150)}...
           </Typography>
           <Typography variant="h5" color="#011936">
             {price}...
           </Typography>
-          <Rating name="read-only" value={rate} />
+          <Rating name="read-only" value={parseInt(rate)} />
 
-          <Link to={`/purchase/${id}`} className="text-decoration-none">
+          <Link to={`/purchase/${_id}`} className="text-decoration-none">
             <Button
               size="medium"
               variant="contained"

@@ -7,7 +7,7 @@ import Feature from "../Feature/Feature";
 const Features = () => {
   const [features, setFeatures] = useState([]);
   useEffect(() => {
-    fetch("features.json")
+    fetch("http://localhost:5000/features")
       .then((res) => res.json())
       .then((data) => setFeatures(data));
   }, []);
@@ -20,7 +20,7 @@ const Features = () => {
       ></Title>
       <Row xs={1} md={2} lg={3} className="mx-auto g-4">
         {features.map((feature) => (
-          <Feature key={feature.id} feature={feature}></Feature>
+          <Feature key={feature._id} feature={feature}></Feature>
         ))}
       </Row>
     </Container>

@@ -20,7 +20,6 @@ const services = [
     color: "blue",
   },
   {
-    id: 2,
     name: "Mercedes-Benz GL-Class",
     price: "$80,900",
     desc1:
@@ -39,7 +38,6 @@ const services = [
     color: "orange",
   },
   {
-    id: 3,
     name: "Mercedes-Benz GLE-Class",
     price: "$110,500",
     desc1:
@@ -57,7 +55,6 @@ const services = [
     color: "orange",
   },
   {
-    id: 4,
     name: "Mazda Mazda3",
     price: "$17,000",
     desc1: `The Mazda3 (known as the Mazda Axela in Japan (first three generations), a combination of "accelerate" and "excellent"[4]) is a compact car manufactured in Japan by Mazda. It was introduced in 2003 as a 2004 model, replacing the Familia/323/Protegé in the C-segment. A performance-oriented version of the Mazda3 was marketed as the Mazdaspeed3 in North America, Axela in Japan, and the Mazda 3 MPS in Europe.`,
@@ -74,7 +71,6 @@ const services = [
     color: "red",
   },
   {
-    id: 5,
     name: "Hyundai Elantra",
     price: "$25,600",
     desc1:
@@ -92,7 +88,6 @@ const services = [
     color: "silver",
   },
   {
-    id: 6,
     name: "Kia K900",
     price: "$69,000",
     desc1:
@@ -110,7 +105,6 @@ const services = [
     color: "blue",
   },
   {
-    id: 7,
     name: "Nissan Pathfinder",
     price: "$35,000",
     desc1:
@@ -128,7 +122,6 @@ const services = [
     color: "Purple",
   },
   {
-    id: 8,
     name: "Audi Q5",
     price: "$65,000",
     desc1:
@@ -146,7 +139,6 @@ const services = [
     color: "Green",
   },
   {
-    id: 9,
     name: "BMW 550i",
     price: "$60,000",
     desc1:
@@ -164,7 +156,6 @@ const services = [
     color: "red",
   },
   {
-    id: 10,
     name: "Acura Elite Specifications",
     price: "$49,500",
     desc1:
