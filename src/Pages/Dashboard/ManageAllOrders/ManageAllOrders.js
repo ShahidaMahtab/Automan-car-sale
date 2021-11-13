@@ -81,7 +81,7 @@ const ManageAllOrders = () => {
         <Alert severity="success">status updated successfully</Alert>
       )}
       <Row>
-        <Col xs={12}>
+        <Col xs={6} lg={12}>
           <TableContainer component={Paper}>
             <Table aria-label="appointment table">
               <TableHead>

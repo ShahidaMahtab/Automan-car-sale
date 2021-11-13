@@ -45,7 +45,7 @@ const MyOrders = () => {
     <section>
       <h2>Available Orders : {orders?.length}</h2>
       <Row>
-        <Col xs={12}>
+        <Col xs={6} lg={12}>
           <TableContainer component={Paper}>
             <Table aria-label="appointment table">
               <TableHead>

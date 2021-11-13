@@ -186,9 +186,9 @@ const Dashboard = (props) => {
           <Route path={`${path}/myOrder`}>
             <MyOrders></MyOrders>
           </Route>
-          <Route path={`${path}/addReviews`}>
+          {/*  <Route path={`${path}/addReviews`}>
             <AddReview />
-          </Route>
+          </Route> */}
           <Route path={`${path}/mypayment`}>
             <Pay />
           </Route>
