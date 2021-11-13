@@ -36,7 +36,7 @@ const AddReview = () => {
         <Box
           component="form"
           sx={{
-            "& .MuiTextField-root": { m: 1, width: "50ch" },
+            "& .MuiTextField-root": { m: 1 },
           }}
           noValidate
           autoComplete="off"

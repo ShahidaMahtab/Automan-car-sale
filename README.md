@@ -1,7 +1,14 @@
-# Getting Started with Create React App
+# AutoMan
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+This project was created using react [AutoMan](https://auto-man-aee9b.web.app/).
+## Website Details
+* There are total five sections in our home page banner,features,about,services,reviews,footer
+* In our Features we have displayed why user should choose us and how our services can benefit them
+* Our About Section gives a breif detail about our website.
+* In our Services Section we have displayed different Categories of Vehicle from where user can easily choose the car they want to buy.
+* lastly, we have review section where our client can dynamically review our site.
+* There is also a dashboard section where client can see all orders, including deleting and adding reviews.
+* Our Dashboard also has admin section hidden from our normal user where we can appoint a new admin, add new services , can manage all the services and orders ,if needed can remove and set status to shipping.
 ## Available Scripts
 
 In the project directory, you can run:

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,8 +8,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Grid from "@mui/material/Grid";
 import { Alert } from "@mui/material";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import "./ManageAllOrders.css";
 const ManageAllOrders = () => {
   const [orders, setOrders] = useState([]);
   const [statusAlert, setStatusAlert] = useState(false);
@@ -74,15 +76,18 @@ const ManageAllOrders = () => {
     }, 3000);
   }, []);
   return (
-    <div>
-      <h4>Manage All Order</h4>
-      {deleteAlert && <Alert severity="success">Deleted successfully</Alert>}
-      {statusAlert && (
-        <Alert severity="success">status updated successfully</Alert>
-      )}
+    <div className="orderTable">
       <Row>
-        <Col xs={6} lg={12}>
-          <TableContainer component={Paper}>
+        <Col xs={12} lg={12}>
+          <h4>Manage All Order</h4>
+          {deleteAlert && (
+            <Alert severity="success">Deleted successfully</Alert>
+          )}
+          {statusAlert && (
+            <Alert severity="success">status updated successfully</Alert>
+          )}
+
+          <TableContainer component={Paper} className="">
             <Table aria-label="appointment table">
               <TableHead>
                 <TableRow>
@@ -106,7 +111,6 @@ const ManageAllOrders = () => {
                     <TableCell component="th" scope="row">
                       {order.name}
                     </TableCell>
-
                     <TableCell align="right">{order.email}</TableCell>
                     <TableCell align="right">{order.date}</TableCell>
                     <TableCell align="right">{order.model}</TableCell>
@@ -130,9 +134,10 @@ const ManageAllOrders = () => {
               </TableBody>
             </Table>
           </TableContainer>
+
+          <div>total orders:{orders?.length}</div>
         </Col>
       </Row>
-      <div>total orders:{orders?.length}</div>
     </div>
   );
 };

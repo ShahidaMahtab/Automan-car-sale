@@ -227,7 +227,7 @@ const Purchase = () => {
             </Box>
           </Col>
           <Col xs={12} lg={6}>
-            <div className="d-flex justify-content-center align-items-center ">
+            <div className="d-flex justify-content-center align-items-center mt-5 mt-lg-0">
               <Box
                 component="form"
                 sx={{

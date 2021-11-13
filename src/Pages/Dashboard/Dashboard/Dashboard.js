@@ -23,6 +23,7 @@ import AddService from "../AddService/AddService";
 import ManageAllOrders from "../ManageAllOrders/ManageAllOrders";
 import Dashboardhome from "../Dashboardhome/Dashboardhome";
 import AdminRoute from "../../Login/AdminRoute/AdminRoute";
+import { Row } from "react-bootstrap";
 
 const drawerWidth = 240;
 const Dashboard = (props) => {
@@ -179,32 +180,34 @@ const Dashboard = (props) => {
         }}
       >
         <Toolbar />
-        <Switch>
-          <Route exact path={`${path}`}>
-            <Dashboardhome />
-          </Route>
-          <Route path={`${path}/myOrder`}>
-            <MyOrders></MyOrders>
-          </Route>
-          {/*  <Route path={`${path}/addReviews`}>
-            <AddReview />
-          </Route> */}
-          <Route path={`${path}/mypayment`}>
-            <Pay />
-          </Route>
-          <AdminRoute path={`${path}/makeAdmin`}>
-            <MakeAdmin />
-          </AdminRoute>
-          <AdminRoute path={`${path}/addServices`}>
-            <AddService />
-          </AdminRoute>
-          <AdminRoute path={`${path}/manageServices`}>
-            <ManageServices />
-          </AdminRoute>
-          <AdminRoute path={`${path}/manageAllOrder`}>
-            <ManageAllOrders />
-          </AdminRoute>
-        </Switch>
+        <Box>
+          <Switch>
+            <Route exact path={`${path}`}>
+              <Dashboardhome />
+            </Route>
+            <Route path={`${path}/myOrder`}>
+              <MyOrders></MyOrders>
+            </Route>
+            <Route path={`${path}/addReviews`}>
+              <AddReview />
+            </Route>
+            <Route path={`${path}/mypayment`}>
+              <Pay />
+            </Route>
+            <AdminRoute path={`${path}/makeAdmin`}>
+              <MakeAdmin />
+            </AdminRoute>
+            <AdminRoute path={`${path}/addServices`}>
+              <AddService />
+            </AdminRoute>
+            <AdminRoute path={`${path}/manageServices`}>
+              <ManageServices />
+            </AdminRoute>
+            <AdminRoute path={`${path}/manageAllOrder`}>
+              <ManageAllOrders />
+            </AdminRoute>
+          </Switch>
+        </Box>
       </Box>
     </Box>
   );
