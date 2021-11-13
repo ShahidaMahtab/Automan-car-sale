@@ -77,15 +77,15 @@ const Dashboard = (props) => {
             </Link>
             <Link
               className="text-decoration-none d-block"
-              to={`${url}/mypayment`}
-            >
-              <Button color="inherit">Payment</Button>
-            </Link>
-            <Link
-              className="text-decoration-none d-block"
               to={`${url}/addReviews`}
             >
               <Button color="inherit">Add Review</Button>
+            </Link>
+            <Link
+              className="text-decoration-none d-block"
+              to={`${url}/mypayment`}
+            >
+              <Button color="inherit">Payment</Button>
             </Link>
           </Box>
         )}
@@ -186,11 +186,11 @@ const Dashboard = (props) => {
           <Route path={`${path}/myOrder`}>
             <MyOrders></MyOrders>
           </Route>
-          <Route path={`${path}/mypayment`}>
-            <Pay />
-          </Route>
           <Route path={`${path}/addReviews`}>
             <AddReview />
+          </Route>
+          <Route path={`${path}/mypayment`}>
+            <Pay />
           </Route>
           <AdminRoute path={`${path}/makeAdmin`}>
             <MakeAdmin />

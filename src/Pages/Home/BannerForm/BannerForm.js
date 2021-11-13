@@ -3,10 +3,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import SearchIcon from "@mui/icons-material/Search";
 const BannerForm = () => {
   return (
-    <div
-      className="pt-3"
-      style={{ background: "#011936", marginTop: "-120px" }}
-    >
+    <div className="pt-3" style={{ background: "#011936" }}>
       <Container className="p-5">
         <Form className="text-white">
           <Row>

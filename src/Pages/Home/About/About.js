@@ -14,7 +14,7 @@ const About = ({ nav }) => {
           secondPart={"us?"}
           smallText={"we sell both old and new cars."}
         ></Title>
-        <Row className="g-5 d-flex justify-content-center align-items-center pb-5 px-5">
+        <Row className="g-4">
           <Col xs={12} lg={6}>
             <Typography
               variant="h5"
@@ -42,7 +42,7 @@ const About = ({ nav }) => {
               Automan, we think you should also have pretty high expectations
               for your dealership.
             </Typography>
-            <div className="mt-5 d-flex">
+            <div className="mt-5">
               <button
                 className="btn px-4 py-2 text-white"
                 style={{ background: "#011936" }}
@@ -52,7 +52,7 @@ const About = ({ nav }) => {
             </div>
           </Col>
           <Col xs={12} lg={6}>
-            <img src={about} alt="" className="img-fluid" />
+            <img src={about} alt="carImage" className="" />
           </Col>
         </Row>
       </Container>

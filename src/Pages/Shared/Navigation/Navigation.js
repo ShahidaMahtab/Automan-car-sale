@@ -29,7 +29,7 @@ const Navigation = ({ banner }) => {
           <Navbar.Toggle
             aria-controls="responsive-navbar-nav"
             className="text-secondary"
-            style={{ background: "#011936" }}
+            style={{ background: "white" }}
           />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
@@ -67,7 +67,6 @@ const Navigation = ({ banner }) => {
                     <Button color="inherit">Dashboard</Button>
                   </Link>
                   <Button
-                    variant="outlined"
                     color="inherit"
                     className="d-block"
                     onClick={logOut}

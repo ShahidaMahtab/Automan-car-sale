@@ -6,7 +6,7 @@ const Review = (props) => {
   const { image, name, review, rating } = props.review;
   return (
     <Col>
-      <Card className="rounded mx-auto shadow-none  h-100 bg-transparent">
+      <Card className="rounded-lg mx-auto shadow-none h-100">
         <Card.Body className="">
           <div className="d-flex justify-content-start align-items-center">
             <Avatar

@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Navigation from "../../Shared/Navigation/Navigation";
 
 const carBanner = {
-  background: `linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url(${banner}) no-repeat`,
+  background: `linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8) ), url(${banner}) no-repeat`,
   height: "700px",
 };
 const Banner = () => {
@@ -19,10 +19,10 @@ const Banner = () => {
           <Box>
             <Typography
               variant="h3"
-              className="text-wrap mt-5 d-flex justify-content-center align-items-center"
+              className="text-wrap mt-5 text-center"
               style={{ color: "white", fontWeight: "800" }}
             >
-              Find The Right <br /> Car For You
+              Find The Right <br /> Car For Yourself
             </Typography>
             <Typography
               variant="body2"
