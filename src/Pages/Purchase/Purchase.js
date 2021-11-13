@@ -21,7 +21,7 @@ const Purchase = () => {
   const [service, setService] = useState({});
   const [orderAlert, setOrderAlert] = useState(false);
   useEffect(() => {
-    const url = `http://localhost:5000/services/${servicesId}`;
+    const url = `https://lit-dawn-11195.herokuapp.com/services/${servicesId}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -77,7 +77,7 @@ const Purchase = () => {
     // console.log(data);
     //send to server
 
-    fetch("http://localhost:5000/purchase", {
+    fetch("https://lit-dawn-11195.herokuapp.com/purchase", {
       method: "POST",
       headers: {
         "content-type": "application/json",

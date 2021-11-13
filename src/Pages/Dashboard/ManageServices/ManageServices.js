@@ -13,12 +13,12 @@ const ManageServices = () => {
   const [services, setServices] = useState();
   const [success, setSuccess] = useState(false);
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://lit-dawn-11195.herokuapp.com/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
   const handleDelete = (id) => {
-    const url = `http://localhost:5000/services/${id}`;
+    const url = `https://lit-dawn-11195.herokuapp.com/services/${id}`;
     const proceed = window.confirm(
       "are you sure ? you want to delete the service"
     );
@@ -41,7 +41,7 @@ const ManageServices = () => {
       <h4>Manage Services</h4>
       {success && <Alert severity="success">Deleted successfully</Alert>}
       <Row>
-        <Col xs={12}>
+        <Col xs={12} lg={12}>
           <TableContainer component={Paper}>
             <Table aria-label="appointment table">
               <TableHead>

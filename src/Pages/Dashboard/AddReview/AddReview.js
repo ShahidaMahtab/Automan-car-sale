@@ -2,16 +2,19 @@ import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { useForm } from "react-hook-form";
-import useAuth from "../../../hooks/useAuth";
 import Button from "@mui/material/Button";
 const AddReview = () => {
   //useform->react hook form
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const onSubmit = (data) => {
     // console.log(data);
     //send to server
-
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://lit-dawn-11195.herokuapp.com/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -55,16 +58,21 @@ const AddReview = () => {
               variant="standard"
               {...register("image")}
             />
-            <TextField
-              required
-              id="standard-basic"
-              label="Rating"
-              InputProps={{ inputProps: { min: "1", max: "5", step: "1" } }}
-              type="number"
-              variant="standard"
-              {...register("rating")}
-            />
-
+            <div>
+              <TextField
+                required
+                id="standard-basic"
+                label="Rating"
+                type="number"
+                variant="standard"
+                {...register("rating", { min: 0, max: 5 })}
+              />
+              {errors.rating && (
+                <span className="d-block text-danger ms-2">
+                  rating must be a number between 0-5
+                </span>
+              )}
+            </div>
             <TextField
               required
               id="standard-basic"
@@ -75,6 +83,7 @@ const AddReview = () => {
               variant="standard"
               {...register("review")}
             />
+
             <Button type="submit" variant="contained">
               Add Review
             </Button>

@@ -10,7 +10,7 @@ const AddService = () => {
     // console.log(data);
     //send to server
 
-    fetch("http://localhost:5000/services", {
+    fetch("https://lit-dawn-11195.herokuapp.com/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",

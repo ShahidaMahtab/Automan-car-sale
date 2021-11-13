@@ -4,7 +4,6 @@ import { Col, Row } from "react-bootstrap";
 import about from "../../../Images/about.png";
 import Navigation from "../../Shared/Navigation/Navigation";
 import Title from "../../Shared/Title/Title";
-import AddIcCallIcon from "@mui/icons-material/AddIcCall";
 const About = ({ nav }) => {
   return (
     <section>

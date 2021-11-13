@@ -1,16 +1,19 @@
 import { Alert, TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "@mui/material/Button";
+import useAuth from "../../../hooks/useAuth";
 const MakeAdmin = () => {
   const { register, handleSubmit, reset } = useForm();
   const [success, setSuccess] = useState(false);
+  const { token } = useAuth();
   const onSubmit = (data) => {
     //send to server
-    fetch("http://localhost:5000/users/admin", {
+    fetch("https://lit-dawn-11195.herokuapp.com/users/admin", {
       method: "PUT",
       headers: {
+        authorization: `Bearer ${token}`,
         "content-type": "application/json",
       },
       body: JSON.stringify(data),
@@ -24,6 +27,12 @@ const MakeAdmin = () => {
         }
       });
   };
+  useEffect(() => {
+    // when the component is mounted, the alert is displayed for 3 seconds
+    setTimeout(() => {
+      setSuccess(false);
+    }, 3000);
+  }, []);
   return (
     <div>
       <h2 className="text-center my-5">Make Admin</h2>

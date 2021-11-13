@@ -16,13 +16,13 @@ const ManageAllOrders = () => {
   const [deleteAlert, setDeleteAlert] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allorders`)
+    fetch(`https://lit-dawn-11195.herokuapp.com/allorders`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
-  }, [orders]);
+  }, []);
   //delete
   const handleDelete = (id) => {
-    const url = `http://localhost:5000/orders/${id}`;
+    const url = `https://lit-dawn-11195.herokuapp.com/orders/${id}`;
     const proceed = window.confirm(
       "are you sure ? you want to delete the order"
     );
@@ -45,8 +45,10 @@ const ManageAllOrders = () => {
     const matchedId = orders.filter((order) => order._id === id);
 
     const [data] = matchedId;
+    const newData = data;
+    console.log(newData);
 
-    const url = `http://localhost:5000/allorders/${id}`;
+    const url = `https://lit-dawn-11195.herokuapp.com/allorders/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -57,8 +59,9 @@ const ManageAllOrders = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
-          data.status = "shipping";
           setStatusAlert(true);
+          console.log(data);
+          newData.status = "shipping";
         }
       });
   };

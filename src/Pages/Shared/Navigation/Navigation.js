@@ -69,7 +69,7 @@ const Navigation = ({ banner }) => {
                   <Button
                     variant="outlined"
                     color="inherit"
-                    className="d-block me-lg-3"
+                    className="d-block"
                     onClick={logOut}
                     size="small"
                   >

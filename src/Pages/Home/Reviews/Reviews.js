@@ -6,18 +6,18 @@ import Review from "../Review/Review";
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("https://lit-dawn-11195.herokuapp.com/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
   return (
-    <Container className="mt-5 mb-5">
+    <Container className="my-5">
       <Title
         firstPart={"Client"}
         secondPart={"Reviews"}
         smallText={"find out what client says about us"}
       ></Title>
-      <Row xs={1} md={2} lg={3} className="g-4 p-4 my-2">
+      <Row xs={1} md={2} lg={3} className="g-4">
         {reviews.map((review) => (
           <Review key={review._id} review={review}></Review>
         ))}

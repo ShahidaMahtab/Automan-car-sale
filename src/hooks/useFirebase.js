@@ -7,6 +7,7 @@ import {
   signOut,
   updateProfile,
   onAuthStateChanged,
+  getIdToken,
 } from "firebase/auth";
 
 //initialize firebase app
@@ -17,6 +18,7 @@ const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [admin, setAdmin] = useState(false);
   const [error, setError] = useState("");
+  const [token, setToken] = useState("");
   const auth = getAuth();
 
   //email register
@@ -70,6 +72,9 @@ const useFirebase = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        getIdToken(user).then((idToken) => {
+          setToken(idToken);
+        });
       } else {
         // User is signed out
         setUser({});
@@ -81,7 +86,7 @@ const useFirebase = () => {
   }, [auth]);
   //admin
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user.email}`)
+    fetch(`https://lit-dawn-11195.herokuapp.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);
@@ -100,7 +105,7 @@ const useFirebase = () => {
   //save user to db
   const saveUser = (email, displayName) => {
     const user = { email, displayName };
-    fetch("http://localhost:5000/users", {
+    fetch("https://lit-dawn-11195.herokuapp.com/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -111,6 +116,7 @@ const useFirebase = () => {
   return {
     user,
     admin,
+    token,
     error,
     isLoading,
     registerUser,
