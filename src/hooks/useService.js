@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import useAxios from "./useAxios";
 
 const useService = () => {
+  const { client } = useAxios();
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("https://lit-dawn-11195.herokuapp.com/services")
-      .then((res) => res.json())
-      .then((data) => setServices(data));
+    client.get(`/services`).then((response) => {
+      setServices(response.data);
+    });
   }, []);
 
   return [services];

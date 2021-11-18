@@ -3,27 +3,19 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "@mui/material/Button";
+import useAxios from "../../../hooks/useAxios";
 const AddService = () => {
+  const { client } = useAxios();
   const { register, handleSubmit, reset } = useForm();
   const [success, setSuccess] = useState(false);
   const onSubmit = (data) => {
-    // console.log(data);
     //send to server
-
-    fetch("https://lit-dawn-11195.herokuapp.com/services", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          setSuccess(true);
-          reset();
-        }
-      });
+    client.post("/services", data).then((response) => {
+      if (response.data.insertedId) {
+        setSuccess(true);
+        reset();
+      }
+    });
   };
   //alert dissappear
   useEffect(() => {

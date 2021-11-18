@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Row, Spinner } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 import useAuth from "../../../hooks/useAuth";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,43 +9,45 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import DeleteIcon from "@mui/icons-material/Delete";
+import useAxios from "../../../hooks/useAxios";
 const MyOrders = () => {
   const { user } = useAuth();
   const [orders, setOrders] = useState([]);
   const email = user.email;
+  const { client } = useAxios();
   useEffect(() => {
     if (email) {
-      fetch(`https://lit-dawn-11195.herokuapp.com/orders?email=${email}`)
-        .then((res) => res.json())
-        .then((data) => setOrders(data));
+      client
+        .get(`/orders?email=${email}`)
+        .then((response) => {
+          setOrders(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     } else {
       <Spinner animation="border" variant="success" className="p-5 my-5" />;
     }
   }, [email]);
   const handleDelete = (id) => {
-    const url = `https://lit-dawn-11195.herokuapp.com/orders/${id}`;
     const proceed = window.confirm(
-      "are you sure ? you want to delete your order"
+      "are you sure, you want to cancel your order?"
     );
     if (proceed) {
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            alert("deleted successfully");
-            const remaining = orders.filter((order) => order._id !== id);
-            setOrders(remaining);
-          }
-        });
+      client.delete(`orders/${id}`).then((response) => {
+        if (response.data.deletedCount > 0) {
+          alert("order deleted successfully");
+          const remaining = orders.filter((order) => order._id !== id);
+          setOrders(remaining);
+        }
+      });
     }
   };
   return (
-    <section>
-      <h2>Available Orders : {orders?.length}</h2>
-      <Row>
-        <Col xs={12} lg={12}>
+    <section className="">
+      <h2 className="text-center">Available Orders : {orders?.length}</h2>
+      <div className="d-flex justify-content-center align-items-center">
+        <div className="flex-column d-flex pt-2 px-5 pb-3 border rounded overflow-hidden">
           <TableContainer component={Paper}>
             <Table aria-label="appointment table">
               <TableHead>
@@ -64,7 +66,9 @@ const MyOrders = () => {
                 {orders?.map((order) => (
                   <TableRow
                     key={order._id}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    sx={{
+                      "&:last-child td, &:last-child th": { border: 0 },
+                    }}
                   >
                     <TableCell component="th" scope="row">
                       {order.name}
@@ -87,8 +91,8 @@ const MyOrders = () => {
               </TableBody>
             </Table>
           </TableContainer>
-        </Col>
-      </Row>
+        </div>
+      </div>
     </section>
   );
 };

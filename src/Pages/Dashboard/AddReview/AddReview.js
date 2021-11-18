@@ -3,8 +3,10 @@ import { Box } from "@mui/system";
 import React from "react";
 import { useForm } from "react-hook-form";
 import Button from "@mui/material/Button";
+import useAxios from "../../../hooks/useAxios";
 const AddReview = () => {
   //useform->react hook form
+  const { client } = useAxios();
   const {
     register,
     handleSubmit,
@@ -12,22 +14,13 @@ const AddReview = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    // console.log(data);
     //send to server
-    fetch("https://lit-dawn-11195.herokuapp.com/reviews", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          alert("reviews added successfully");
-          reset();
-        }
-      });
+    client.post("/reviews", data).then((response) => {
+      if (response.data.insertedId) {
+        alert("reviews added successfully");
+        reset();
+      }
+    });
   };
   return (
     <div>

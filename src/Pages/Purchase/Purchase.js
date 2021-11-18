@@ -14,18 +14,22 @@ import Box from "@mui/material/Box";
 import { useForm } from "react-hook-form";
 import DataTable from "../Shared/DataTable/DataTable";
 import useAuth from "../../hooks/useAuth";
+import useAxios from "../../hooks/useAxios";
 
 const Purchase = () => {
+  const { client } = useAxios();
   const { servicesId } = useParams();
   const { user } = useAuth();
   const [service, setService] = useState({});
   const [orderAlert, setOrderAlert] = useState(false);
   useEffect(() => {
-    const url = `https://lit-dawn-11195.herokuapp.com/services/${servicesId}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setService(data);
+    client
+      .get(`services/${servicesId}`)
+      .then((response) => {
+        setService(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, [servicesId]);
   //Date
@@ -76,21 +80,12 @@ const Purchase = () => {
   const onSubmit = (data) => {
     // console.log(data);
     //send to server
-
-    fetch("https://lit-dawn-11195.herokuapp.com/purchase", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          setOrderAlert(true);
-          reset();
-        }
-      });
+    client.post("/purchase", data).then((response) => {
+      if (response.data.insertedId) {
+        setOrderAlert(true);
+        reset();
+      }
+    });
   };
 
   //alert dissappear

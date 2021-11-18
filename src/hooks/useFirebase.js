@@ -9,6 +9,7 @@ import {
   onAuthStateChanged,
   getIdToken,
 } from "firebase/auth";
+import useAxios from "./useAxios";
 
 //initialize firebase app
 initializeFirebase();
@@ -16,11 +17,11 @@ initializeFirebase();
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [admin, setAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [error, setError] = useState("");
   const [token, setToken] = useState("");
   const auth = getAuth();
-
+  const { admin, client } = useAxios();
   //email register
   const registerUser = (email, password, name, history) => {
     setIsLoading(true);
@@ -86,9 +87,10 @@ const useFirebase = () => {
   }, [auth]);
   //admin
   useEffect(() => {
-    fetch(`https://lit-dawn-11195.herokuapp.com/users/${user.email}`)
-      .then((res) => res.json())
-      .then((data) => setAdmin(data.admin));
+    //axios
+    admin.get(`users/${user.email}`).then((response) => {
+      setIsAdmin(response.data.admin);
+    });
   }, [user.email]);
   //log out
   const logOut = () => {
@@ -105,17 +107,16 @@ const useFirebase = () => {
   //save user to db
   const saveUser = (email, displayName) => {
     const user = { email, displayName };
-    fetch("https://lit-dawn-11195.herokuapp.com/users", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
+    //axios
+    client.post("/users", user).then((response) => {
+      if (response.data.insertedId) {
+        alert("registered successfully");
+      }
     });
   };
   return {
     user,
-    admin,
+    isAdmin,
     token,
     error,
     isLoading,

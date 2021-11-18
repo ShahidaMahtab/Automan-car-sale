@@ -1,15 +1,22 @@
 import { Container } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
+import useAxios from "../../../hooks/useAxios";
 import Title from "../../Shared/Title/Title";
 import Feature from "../Feature/Feature";
 
 const Features = () => {
+  const { client } = useAxios();
   const [features, setFeatures] = useState([]);
   useEffect(() => {
-    fetch("https://lit-dawn-11195.herokuapp.com/features")
-      .then((res) => res.json())
-      .then((data) => setFeatures(data));
+    client
+      .get(`/features`)
+      .then((response) => {
+        setFeatures(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
   return (
     <Container>

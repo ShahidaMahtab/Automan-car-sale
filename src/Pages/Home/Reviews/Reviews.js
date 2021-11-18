@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
+import useAxios from "../../../hooks/useAxios";
 import Title from "../../Shared/Title/Title";
 import Review from "../Review/Review";
 
 const Reviews = () => {
+  const { client } = useAxios();
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("https://lit-dawn-11195.herokuapp.com/reviews")
-      .then((res) => res.json())
-      .then((data) => setReviews(data));
+    client
+      .get(`/reviews`)
+      .then((response) => {
+        setReviews(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
   return (
     <Container className="my-5">

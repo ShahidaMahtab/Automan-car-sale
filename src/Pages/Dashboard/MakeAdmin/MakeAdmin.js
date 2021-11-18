@@ -4,25 +4,23 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "@mui/material/Button";
 import useAuth from "../../../hooks/useAuth";
+import useAxios from "../../../hooks/useAxios";
 const MakeAdmin = () => {
   const { register, handleSubmit, reset } = useForm();
+  const { admin } = useAxios();
   const [success, setSuccess] = useState(false);
   const { token } = useAuth();
   const onSubmit = (data) => {
     //send to server
-    fetch("https://lit-dawn-11195.herokuapp.com/users/admin", {
-      method: "PUT",
-      headers: {
-        authorization: `Bearer ${token}`,
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount) {
+    admin
+      .put("/users", data, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        if (response.data.modifiedCount) {
           setSuccess(true);
-          // console.log(data);
           reset();
         }
       });
@@ -31,7 +29,7 @@ const MakeAdmin = () => {
     // when the component is mounted, the alert is displayed for 3 seconds
     setTimeout(() => {
       setSuccess(false);
-    }, 3000);
+    }, 1000);
   }, []);
   return (
     <div>

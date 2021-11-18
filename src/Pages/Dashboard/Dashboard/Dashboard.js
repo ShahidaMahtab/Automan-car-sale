@@ -27,7 +27,7 @@ import { Row } from "react-bootstrap";
 
 const drawerWidth = 240;
 const Dashboard = (props) => {
-  const { user, logOut, admin } = useAuth();
+  const { user, logOut, isAdmin } = useAuth();
   const { window } = props;
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -39,7 +39,7 @@ const Dashboard = (props) => {
     <div>
       <Toolbar />
       <div className="d-flex justify-content-center flex-column align-items-center">
-        {admin && (
+        {isAdmin && (
           <Box>
             <Link
               className="text-decoration-none d-block"
@@ -68,7 +68,7 @@ const Dashboard = (props) => {
           </Box>
         )}
 
-        {admin || (
+        {isAdmin || (
           <Box>
             <Link
               className="text-decoration-none d-block"

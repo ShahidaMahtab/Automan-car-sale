@@ -9,31 +9,28 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Alert } from "@mui/material";
+import useAxios from "../../../hooks/useAxios";
 const ManageServices = () => {
+  const { client } = useAxios();
   const [services, setServices] = useState();
   const [success, setSuccess] = useState(false);
   useEffect(() => {
-    fetch("https://lit-dawn-11195.herokuapp.com/services")
-      .then((res) => res.json())
-      .then((data) => setServices(data));
+    client.get("/services").then((response) => {
+      setServices(response.data);
+    });
   }, []);
   const handleDelete = (id) => {
-    const url = `https://lit-dawn-11195.herokuapp.com/services/${id}`;
     const proceed = window.confirm(
-      "are you sure ? you want to delete the service"
+      "are you sure, you want to delete the service?"
     );
     if (proceed) {
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            setSuccess(true);
-            const remaining = services.filter((service) => service._id !== id);
-            setServices(remaining);
-          }
-        });
+      client.delete(`services/${id}`).then((response) => {
+        if (response.data.deletedCount > 0) {
+          const remaining = services.filter((order) => order._id !== id);
+          setServices(remaining);
+          alert("deleted successfully");
+        }
+      });
     }
   };
   return (
