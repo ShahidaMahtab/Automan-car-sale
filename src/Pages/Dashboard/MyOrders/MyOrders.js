@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Spinner } from "react-bootstrap";
+import { Row, Spinner } from "react-bootstrap";
 import useAuth from "../../../hooks/useAuth";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,7 +9,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Link } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
+
 const MyOrders = () => {
   const { user } = useAuth();
   const [orders, setOrders] = useState([]);
@@ -46,53 +48,58 @@ const MyOrders = () => {
   return (
     <section className="">
       <h2 className="text-center">Available Orders : {orders?.length}</h2>
-      <div className="d-flex justify-content-center align-items-center">
-        <div className="flex-column d-flex pt-2 px-5 pb-3 border rounded overflow-hidden">
-          <TableContainer component={Paper}>
-            <Table aria-label="appointment table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell align="right">Email</TableCell>
-                  <TableCell align="right">Order Date</TableCell>
-                  <TableCell align="right">Car Model</TableCell>
-                  <TableCell align="right">Address</TableCell>
-                  <TableCell align="right">Phone</TableCell>
-                  <TableCell align="right">Status</TableCell>
-                  <TableCell align="right">Action</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {orders?.map((order) => (
-                  <TableRow
-                    key={order._id}
-                    sx={{
-                      "&:last-child td, &:last-child th": { border: 0 },
-                    }}
-                  >
-                    <TableCell component="th" scope="row">
-                      {order.name}
-                    </TableCell>
 
-                    <TableCell align="right">{order.email}</TableCell>
-                    <TableCell align="right">{order.date}</TableCell>
-                    <TableCell align="right">{order.model}</TableCell>
-                    <TableCell align="right">{order.address}</TableCell>
-                    <TableCell align="right">{order.phone}</TableCell>
-                    <TableCell align="right">{order.status}</TableCell>
-                    <TableCell
-                      align="right"
-                      onClick={() => handleDelete(order._id)}
-                    >
-                      <DeleteIcon />
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </div>
-      </div>
+      <TableContainer component={Paper}>
+        <Table aria-label="appointment table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell align="right">Order Date</TableCell>
+              <TableCell align="right">Car Model</TableCell>
+              <TableCell align="right">Address</TableCell>
+              <TableCell align="right">Price</TableCell>
+              <TableCell align="right">Status</TableCell>
+              <TableCell align="right">Pay</TableCell>
+              <TableCell align="right">Delete</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {orders?.map((order) => (
+              <TableRow
+                key={order._id}
+                sx={{
+                  "&:last-child td, &:last-child th": { border: 0 },
+                }}
+              >
+                <TableCell component="th" scope="row">
+                  {order.name}
+                </TableCell>
+
+                <TableCell align="right">{order.date}</TableCell>
+                <TableCell align="right">{order.model}</TableCell>
+                <TableCell align="right">{order.address}</TableCell>
+                <TableCell align="right">{order.price}</TableCell>
+                <TableCell align="right">{order.status}</TableCell>
+                <TableCell align="right">
+                  {order.payment ? (
+                    "paid"
+                  ) : (
+                    <Link to={`/dashboard/payment/${order._id}`}>
+                      <button className="btn btn-primary">pay</button>
+                    </Link>
+                  )}
+                </TableCell>
+                <TableCell
+                  align="right"
+                  onClick={() => handleDelete(order._id)}
+                >
+                  <DeleteIcon />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </section>
   );
 };

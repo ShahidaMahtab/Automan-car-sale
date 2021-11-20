@@ -8,7 +8,7 @@ import BannerForm from "../BannerForm/BannerForm";
 import Features from "../Features/Features";
 import Reviews from "../Reviews/Reviews";
 import Services from "../Services/Services";
-
+import "./Home.css";
 const Home = () => {
   return (
     <div>

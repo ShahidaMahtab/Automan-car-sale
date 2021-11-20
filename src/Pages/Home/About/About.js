@@ -2,13 +2,14 @@ import { Container, Typography } from "@mui/material";
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import about from "../../../Images/about.png";
+import Footer from "../../Shared/Footer/Footer";
 import Navigation from "../../Shared/Navigation/Navigation";
 import Title from "../../Shared/Title/Title";
 const About = ({ nav }) => {
   return (
     <section>
       {!nav || <Navigation></Navigation>}
-      <Container>
+      <Container className="mb-4">
         <Title
           firstPart={"About"}
           secondPart={"us?"}

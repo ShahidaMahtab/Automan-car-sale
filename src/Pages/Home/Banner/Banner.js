@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Navigation from "../../Shared/Navigation/Navigation";
 
 const carBanner = {
-  background: `linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8) ), url(${banner}) no-repeat`,
+  background: `linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8) ), url(${banner}) center/cover no-repeat`,
   height: "700px",
 };
 const Banner = () => {

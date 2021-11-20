@@ -61,7 +61,7 @@ const ManageServices = () => {
                     </TableCell>
 
                     <TableCell align="right">{service.name}</TableCell>
-                    <TableCell align="right">{service.price}</TableCell>
+                    <TableCell align="right">${service.price}</TableCell>
                     <TableCell align="right">{service.rate}</TableCell>
 
                     <TableCell

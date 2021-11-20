@@ -78,8 +78,8 @@ const Purchase = () => {
   //useform
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    // console.log(data);
-    //send to server
+    data.price = price;
+
     client.post("/purchase", data).then((response) => {
       if (response.data.insertedId) {
         setOrderAlert(true);
@@ -120,7 +120,7 @@ const Purchase = () => {
               {name}
             </Typography>
             <Typography variant="h5" gutterBottom component="div">
-              {price}
+              ${price}
             </Typography>
             <DataTable rows={rows} />
           </Col>
@@ -232,10 +232,7 @@ const Purchase = () => {
                 autoComplete="off"
                 onSubmit={handleSubmit(onSubmit)}
               >
-                <div
-                  className="flex-column d-flex pt-2 px-3 pb-3 border rounded"
-                  style={{ background: "#011936" }}
-                >
+                <div className="flex-column d-flex  border rounded">
                   <TextField
                     required
                     type="hidden"

@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 
@@ -23,7 +22,6 @@ import AddService from "../AddService/AddService";
 import ManageAllOrders from "../ManageAllOrders/ManageAllOrders";
 import Dashboardhome from "../Dashboardhome/Dashboardhome";
 import AdminRoute from "../../Login/AdminRoute/AdminRoute";
-import { Row } from "react-bootstrap";
 
 const drawerWidth = 240;
 const Dashboard = (props) => {
@@ -82,12 +80,6 @@ const Dashboard = (props) => {
             >
               <Button color="inherit">Add Review</Button>
             </Link>
-            <Link
-              className="text-decoration-none d-block"
-              to={`${url}/mypayment`}
-            >
-              <Button color="inherit">Payment</Button>
-            </Link>
           </Box>
         )}
       </div>
@@ -97,7 +89,7 @@ const Dashboard = (props) => {
   const container =
     window !== undefined ? () => window().document.body : undefined;
   return (
-    <Box sx={{ display: "flex" }} style={{ background: "#EEF4FC" }}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -171,7 +163,6 @@ const Dashboard = (props) => {
         </Drawer>
       </Box>
       <Box
-        style={{ background: "#EEF4FC" }}
         component="main"
         sx={{
           flexGrow: 1,
@@ -191,7 +182,7 @@ const Dashboard = (props) => {
             <Route path={`${path}/addReviews`}>
               <AddReview />
             </Route>
-            <Route path={`${path}/mypayment`}>
+            <Route path={`${path}/payment/:paymentId`}>
               <Pay />
             </Route>
             <AdminRoute path={`${path}/makeAdmin`}>
