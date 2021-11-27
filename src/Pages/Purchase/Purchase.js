@@ -134,7 +134,7 @@ const Purchase = () => {
                 className="mb-3"
               >
                 <Tab eventKey="VEHICLE DESCRIPTION" title="VEHICLE DESCRIPTION">
-                  <Typography variant="body2">
+                  <Typography variant="body2" className="bg-white py-2 px-3">
                     {desc2}
                     <br />
                     <br />
@@ -146,7 +146,7 @@ const Purchase = () => {
                 </Tab>
                 <Tab eventKey="FEATURES" title="FEATURES">
                   <Box>
-                    <Row>
+                    <Row className="bg-white p-3">
                       <Col lg={6}>
                         <Typography
                           variant="body2"

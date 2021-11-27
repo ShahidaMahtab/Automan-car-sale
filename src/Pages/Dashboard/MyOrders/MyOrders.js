@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row, Spinner } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import useAuth from "../../../hooks/useAuth";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -45,12 +45,14 @@ const MyOrders = () => {
       });
     }
   };
-  return (
-    <section className="">
-      <h2 className="text-center">Available Orders : {orders?.length}</h2>
 
+  return (
+    <Container>
+      <h2 className="text-center text-wrap">
+        Available Orders : {orders?.length}
+      </h2>
       <TableContainer component={Paper}>
-        <Table aria-label="appointment table">
+        <Table aria-label="table" className="container">
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
@@ -100,7 +102,7 @@ const MyOrders = () => {
           </TableBody>
         </Table>
       </TableContainer>
-    </section>
+    </Container>
   );
 };
 

@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  CardElement,
-  useStripe,
-  useElements,
-  _id,
-} from "@stripe/react-stripe-js";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import useAuth from "../../../hooks/useAuth";
 import { CircularProgress } from "@mui/material";
 import useAxios from "../../../hooks/useAxios";
